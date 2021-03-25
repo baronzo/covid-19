@@ -9,13 +9,13 @@ const api = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations'
 
 function App() {
   const [locationArray, setLocationArray] = useState([])
-
+  //sort
   function sortedLocationArray(locations) {
     return [...locations].sort((location1, location2) => {
       return location2.latest.confirmed - location1.latest.confirmed
     })
   }
-  
+
   useEffect(() => {
     Axios.get(api).then(response => {
       const sortedLocations = sortedLocationArray(response.data.locations)
